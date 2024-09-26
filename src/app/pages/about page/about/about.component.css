@@ -1,0 +1,29 @@
+.tobasket{
+  border: none !important;
+  outline: none !important;
+}
+
+.tobasket:hover{
+  opacity:0.85 !important;
+}
+
+
+
+
+.star{
+  background:none;
+  border:none;
+  outline:none;
+}
+
+
+
+
+
+.star:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+
+

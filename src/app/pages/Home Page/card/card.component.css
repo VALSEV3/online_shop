@@ -1,0 +1,18 @@
+.card {
+  transition: .2s ease-out;
+  cursor: pointer;
+  transform-origin: center; /* Scale from center */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.tobasket{
+  border: none !important;
+  outline: none !important;
+}
+
+.tobasket:hover{
+  opacity:0.85 !important;
+}

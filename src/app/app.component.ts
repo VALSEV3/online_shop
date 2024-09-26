@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
+import { HomeComponent } from './pages/Home Page/home/home.component';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { BannerComponent } from './banner/banner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HeaderComponent,BannerComponent],
+  imports: [HomeComponent,RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'online_shop';
+
 }
