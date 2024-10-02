@@ -1,8 +1,9 @@
+
 <header>
   <app-header></app-header>
 </header>
 
-<main class="mt-5 pt-5 d-flex flex-wrap justify-content-center h-100">
+<main class="mt-5 pt-5 d-flex flex-wrap justify-content-center " style="min-height: 100vh;">
   <div>
      <h1>Products that are added to the basket</h1>
   </div>
@@ -11,11 +12,11 @@
 
 
   <div
-    class="cards d-flex flex-wrap justify-content-center align-items-center w-75 "
-    style="background-color: rgba(148, 148, 148, 0.397); border-radius: 18px; border: 1px solid rgba(58, 58, 58, 0.534);min-height:50vh;position: relative;"
+    class="cards d-flex flex-wrap justify-content-center align-items-center col-10 "
+    style="background-color: rgba(148, 148, 148, 0.397); border-radius: 18px; border: 1px solid rgba(58, 58, 58, 0.534);position: relative;"
 
   >
-  <div *ngIf="basket.length>0"  class="deleteAll" style="position: absolute;left:10px;top:20px;">
+  <div *ngIf="basket.length>0"  class="deleteAll container m-2" >
     <button
     class="delete-btn btn btn-danger"
 (click)="cardService.removeAllFromBasket()"
@@ -28,8 +29,13 @@
  </button>
  </div>
 
-  <div *ngIf="basket.length === 0">
-    <h3>Your basket is empty</h3>
+  <div class="empty" *ngIf="basket.length === 0">
+    <h3><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+      <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.5 3.5 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.5 4.5 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+    </svg>
+      Your basket is empty
+    </h3>
   </div>
     <app-card *ngFor="let card of basket" [card]="card" style="position: relative;">
 

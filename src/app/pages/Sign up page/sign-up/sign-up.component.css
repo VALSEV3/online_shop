@@ -1,0 +1,41 @@
+:host{
+  overflow: hidden !important;
+  width:100vw;
+  height:100vh !important;
+  display: flex;
+  justify-content: center;
+
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px; /* Adjust this value for spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10; /* Ensures the button is clickable */
+}
+
+
+.signUp{
+  padding:2rem !important;
+padding-top:6rem;
+padding-bottom:6rem;
+}
+
+.form-control{
+  width:25rem ;
+  height:3.1rem;
+}
+
+
+.sign-up-btn{
+  width:100%;
+
+}
+
+#password{
+  position: relative;
+}
+
+

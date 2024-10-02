@@ -2,25 +2,25 @@
   <app-header></app-header>
 </header>
 
-<main class="d-flex justify-content-around flex-column flex-md-row  mt-5 pt-5 h-100">
+<main class="d-flex justify-content-around align-items-center flex-column flex-md-row flex-wrap mt-5 pt-5 h-100">
   <div class="img">
-    <img [src]="cardData.img" style="border-radius: 20px;" class="img-fluid col-md-7 col-12">
+    <img [src]="cardData.img" style="border-radius: 20px;" class="col-md-7 col-10">
   </div>
   <div class="description">
     <h1 style="font-size: 3rem;">{{cardData.price}}</h1>
-    <button (click)="this.cardService.addToBasket(this.cardData)" [ngStyle]="{'background-color': this.cardData.backgroundColor}" class="btn btn-primary py-2 fs-5 tobasket mb-4">
-      <svg *ngIf="!this.cardData.added" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+    <button (click)="cardService.addToBasket(cardData)" [ngStyle]="{'background-color': cardData.backgroundColor}" class="btn btn-primary py-2 fs-5 tobasket mb-4">
+      <svg *ngIf="!cardData.added" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
       </svg>
-      {{this.cardData.btnText}}
+      {{cardData.btnText}}
     </button>
-    <h1 class="">{{cardData.title}}</h1>
+    <h1>{{cardData.title}}</h1>
     <h5 class="mt-2">{{cardData.description}}</h5>
     <div class="rating d-flex mt-5">
-      <button 
+      <button
         class="star"
         *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-        (click)="ratingService.setRating(cardData.id,i + 1)"
+        (click)="ratingService.setRating(cardData.id, i + 1)"
         style="border: none; background: none; cursor: pointer"
       >
         <svg
@@ -30,7 +30,10 @@
           fill="currentColor"
           class="bi bi-star"
           viewBox="0 0 16 16"
-          [ngClass]="{'text-gold': ratingService.getRating(cardData.id) >= i + 1, 'text-black': ratingService.getRating(cardData.id) < i + 1}"
+          [ngClass]="{
+            'text-gold': ratingService.getRating(cardData.id) >= i + 1,
+            'text-black': ratingService.getRating(cardData.id) < i + 1
+          }"
         >
           <path
             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
@@ -40,4 +43,3 @@
     </div>
   </div>
 </main>
-

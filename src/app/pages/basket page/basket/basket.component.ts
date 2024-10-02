@@ -19,4 +19,6 @@ constructor(public cardService:CardService){}
 ngDoCheck(): void {
     this.basket=this.cardService.getBasket()
 }
+
+
 }

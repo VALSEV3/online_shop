@@ -10,3 +10,14 @@
 navbar-toggler-icon{
   color:white !important;
 }
+
+::ng-deep .mat-badge-content {
+  background-color: red !important; /* Changes the badge color to red */
+  color:white !important;
+  top: 5px !important;
+  right:0px !important;
+  height: 20px !important;
+  width: 20px !important;
+  line-height: 20px !important;
+  border-radius: 50% !important;
+}

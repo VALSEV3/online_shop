@@ -43,6 +43,10 @@ export class CardService {
     if (savedCards) {
       this.cards = JSON.parse(savedCards);
     }
+    const savedBasket= localStorage.getItem('basket')
+     if (savedBasket) {
+      this.basket = JSON.parse(savedBasket);
+    }
   }
 
   getCards(): Card[] {
@@ -50,8 +54,7 @@ export class CardService {
   }
 
   getBasket(): Card[] {
-    this.basket = this.cards.filter((card: Card) => card.added === true);
-    return this.basket;
+   return this.basket
   }
 
   // Update all cards and persist them in local storage
@@ -59,47 +62,52 @@ export class CardService {
     localStorage.setItem('card', JSON.stringify(this.cards));
   }
 
+  setBasket()
+  {
+  localStorage.setItem('basket', JSON.stringify(this.basket));
+  }
+
   addToBasket(card: Card): void {
     if (!card.added) {
       card.added = true;
       card.btnText = 'Added to basket';
       card.backgroundColor = 'grey';
-      this.setCards(); // Update local storage
-    }
-  }
-
-
-  removeFromBasket(card: Card): void {
-    const isConfirmed = confirm('Are you sure you want to delete this item from the basket?');
-
-    if(isConfirmed){
-      card.added = false;
-    card.btnText = 'Add to basket';
-    card.backgroundColor = '#0d6efd';
-    this.setCards(); // Save to localStorage
-    }
-
-  }
-
-  removeAllFromBasket() {
-    // Запрашиваем подтверждение у пользователя
-    const isConfirmed = confirm('Are you sure you want to delete all items from the basket?');
-
-    if (isConfirmed) {
-      // Если пользователь подтвердил, обновляем состояние карт
-      this.cards.forEach(card => {
-        card.added = false; // Сбрасываем состояние добавления
-        card.btnText = 'Добавить в корзину'; // Обновляем текст кнопки
-        card.backgroundColor = '#0d6efd'; // Восстанавливаем цвет фона
-      });
-
-      // Очищаем корзину
-      this.basket = [];
-
-      // Сохраняем изменения в локальное хранилище
+      this.basket.push(card)
+      this.setBasket();
       this.setCards();
     }
   }
 
 
+  removeFromBasket(card: Card): void {
+    const index = this.basket.findIndex(b => b.id === card.id); // Find the index of the card in the basket
+    if (index !== -1) {
+        this.basket.splice(index, 1); // Remove the card from the basket
+        card.added = false;
+        card.btnText = 'Add to basket';
+        card.backgroundColor = '#0d6efd';
+        this.setBasket();
+        this.setCards(); // Save to localStorage
+    }
 }
+
+
+removeAllFromBasket() {
+  const isConfirmed = confirm('Are you sure you want to delete all items from the basket?');
+
+  if (isConfirmed) {
+      this.cards.forEach(card => {
+          card.added = false;
+          card.btnText = 'Add to basket';
+          card.backgroundColor = '#0d6efd';
+          this.basket = [];
+      });
+
+    // Clear the basket
+
+      this.setCards();
+      this.setBasket(); // Call the method to save changes
+  }
+}
+
+  }
