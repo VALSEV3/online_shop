@@ -11,15 +11,18 @@ export class UserService {
   // Сохранение данных пользователя в Firestore
   async saveUserData(user: any) {
     const userRef = doc(this.firestore, `users/${user.uid}`);
-    await setDoc(userRef, {
-      displayName: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL,
-      createdAt: new Date(),
-    });
+    const userDoc = await getDoc(userRef);
 
-
+    if (!userDoc.exists()) {
+      await setDoc(userRef, {
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        createdAt: new Date(),
+      });
+    }
   }
+
 
   async getUserData() {
     const user = this.auth.currentUser;

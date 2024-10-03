@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  overflow: hidden !important;
+  height: 100vh !important;
+  width: 100vw;
+}
+
+main {
+  overflow-y: hidden !important; /* Hide vertical overflow */
+  height: calc(100vh - 100px); /* Adjust this value based on header height */
+}
+
+
+.btn:hover{
+  opacity: 1;
+  transition: 0.4s linear;
+  transform:scale(1);
+  background-color: rgba(175, 175, 175) !important;
+}
+
+

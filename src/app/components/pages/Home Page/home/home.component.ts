@@ -4,10 +4,10 @@ import { BannerComponent } from '../banner/banner.component';
 import { CardComponent } from '../card/card.component';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Card } from '../../../models/card';
-import { CardService } from '../../../services/card.service';
+import { Card } from '../../../../models/card';
+import { CardService } from '../../../../services/card.service';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { RatingService } from '../../../services/rating.service';
+import { RatingService } from '../../../../services/rating.service';
 
 @Component({
   selector: 'home-page',

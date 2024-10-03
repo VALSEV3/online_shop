@@ -1,6 +1,6 @@
-import { CardService } from './../../../services/card.service';
+import { CardService } from '../../../../services/card.service';
 import { Component, Input } from '@angular/core';
-import { Card } from '../../../models/card';
+import { Card } from '../../../../models/card';
 import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { RouterLink,RouterLinkActive,RouterOutlet } from '@angular/router';
 

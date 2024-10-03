@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-primary fixed-top">
+<nav class="navbar  navbar-expand-sm bg-primary fixed-top">
   <div class="container-fluid head">
     <a class="navbar-brand logo" routerLink="/home-page" routerLinkActive="active" aria-current="page">
       <img src="VALSEV Logo.png" style="width: 50px; border-radius: 50%;" alt="VALSEV Logo">
@@ -8,32 +8,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
+    <div class="offcanvas offcanvas-end container-fluid" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header ">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body d-flex flex-sm-row flex-column align-items-center">
-        <ul class="navbar-nav">
-          <li class="nav-item" >
-            <a [matBadge]="badge"  [matBadgeHidden]="badge === 0" class="nav-link btn btn-primary" routerLink="/app-basket" routerLinkActive="active" aria-current="page" >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-              </svg>
-              Basket
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn btn-primary" routerLink="/app-sign-up" routerLinkActive="active" aria-current="page" >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-              </svg>
-              Sign up
-            </a>
-          </li>
-        </ul>
-
-        <div class="d-flex ms-3 darkModeBtn">
+      <div class="offcanvas-body d-flex flex-sm-row flex-column align-items-center  container-fluid justify-content-end" >
+        <div class="d-flex me-3 ms-4 darkModeBtn">
           <ng-container *ngIf="!isDarkMode; else darkModeTemplate">
             <button (click)="onDarkMode()" class="btn btn-primary nav-link nav-item" aria-label="Switch to dark mode">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
@@ -49,6 +30,35 @@
             </button>
           </ng-template>
         </div>
+        <ul class="navbar-nav d-flex align-items-center">
+          <li class="nav-item basketLink">
+            <a [matBadge]="badge" [matBadgeHidden]="badge === 0" class="nav-link btn btn-primary" routerLink="/app-basket" routerLinkActive="active" aria-current="page">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg>
+              Basket
+            </a>
+          </li>
+          <li class="nav-item " *ngIf="!user; else profileLink" >
+            <a class="nav-link btn btn-primary" routerLink="/app-sign-up" routerLinkActive="active" aria-current="page">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+              </svg>
+              Sign up
+            </a>
+          </li>
+          <ng-template #profileLink>
+            <li class="nav-item">
+              <a class="nav-link btn btn-primary" routerLink="/app-profile" routerLinkActive="active" aria-current="page">
+                <img [src]="user.photoURL" alt="Profile Picture" style="width: 40px;  border-radius: 50%;">
+              </a>
+            </li>
+          </ng-template>
+
+        </ul>
+
+
+
       </div>
     </div>
   </div>

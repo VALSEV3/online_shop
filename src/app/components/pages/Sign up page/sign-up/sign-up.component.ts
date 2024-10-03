@@ -2,8 +2,10 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { HeaderComponent } from '../../../header/header.component';
-import { AuthService } from '../../../services/auth.service';
-import { UserService } from '../../../services/user.service';
+import { AuthService } from '../../../../services/auth.service';
+import { UserService } from '../../../../services/user.service';
+
+
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -52,6 +54,11 @@ userData:any;
   catch(e){
     console.error(e);
   }
+  }
+
+  githubSignUp(){
+    this.authService.githubSignIn();
+    alert(`Hello ${this.userData.displayName}`)
   }
 
 }

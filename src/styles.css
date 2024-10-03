@@ -31,6 +31,14 @@ body.dark-mode .cardrating {
   color: black !important;
 }
 
+body.dark-mode .basketLink {
+ background-color: #0d6efd !important;
+}
+
+body.dark-mode .navbar-nav{
+  background-color: #0d6efd !important;
+ }
+
 .cardrating {
   color: black !important;
 }

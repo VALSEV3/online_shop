@@ -1,9 +1,10 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { NgIf, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute, Router } from '@angular/router';
-import { CardService } from '../services/card.service';
-import { Card } from '../models/card';
+import { CardService } from '../../services/card.service';
+import { Card } from '../../models/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -19,8 +20,8 @@ export class HeaderComponent implements OnInit, DoCheck {
   badge = 0;
   currentRoute = '';
   basketOpened = false;
-
-  constructor(private cardService: CardService, private router: Router, private route: ActivatedRoute) {}
+user:any;
+  constructor(private cardService: CardService, private router: Router, private authService:AuthService) {}
 
   ngOnInit() {
     const basketOpened=localStorage.getItem('basketOpened')
@@ -41,6 +42,13 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.router.events.subscribe(() => {
       this.currentRoute = this.router.url;
     });
+
+this.authService.getUser().subscribe(user=>{
+  this.user=user;
+  console.log(this.user)
+})
+
+
   }
 
   ngDoCheck(): void {

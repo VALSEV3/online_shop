@@ -1,9 +1,9 @@
 import { Component, DoCheck} from '@angular/core';
 import { HeaderComponent } from '../../../header/header.component';
 import { NgStyle, NgIf, NgFor, NgClass } from '@angular/common';
-import { RatingService } from '../../../services/rating.service';
-import { CardService } from '../../../services/card.service';
-import { Card } from '../../../models/card';
+import { RatingService } from '../../../../services/rating.service';
+import { CardService } from '../../../../services/card.service';
+
 @Component({
   selector: 'app-about',
   standalone: true,
