@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../../../header/header.component';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { HeaderComponent } from '../../../header/header.component';
 import { AuthService } from '../../../services/auth.service';
-
+import { UserService } from '../../../services/user.service';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -18,13 +18,16 @@ import { AuthService } from '../../../services/auth.service';
 export class SignUpComponent implements OnInit {
   signupForm!: FormGroup;
   showPassword: boolean = false;  // Password visibility toggle
+userData:any;
+  constructor(private fb: FormBuilder,private authService:AuthService,private userService:UserService) {}
 
-  constructor(private fb: FormBuilder, public auth: AuthService) {}
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+    this.userService.getUserData().then(data => {
+      this.userData = data;
     });
   }
 
@@ -41,12 +44,14 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  // Handle Google Sign-In
-  async signInWithGoogle(): Promise<void> {
-    try {
-      console.log('Google Sign-In Successful');
-    } catch (error) {
-      console.error('Google Sign-In Error', error);
+  googleSignUp(){
+    try{
+      this.authService.googleSignIn();
+      alert(`Hello ${this.userData.displayName}`)
     }
+  catch(e){
+    console.error(e);
   }
+  }
+
 }
