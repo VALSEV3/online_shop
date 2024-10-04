@@ -23,12 +23,15 @@ export class AuthService {
     });
     try {
       const result = await signInWithPopup(this.auth, provider);
+      this.router.navigate(['/app-profile']);
       await this.userService.saveUserData(result.user);
       return result.user; // Возвращаем информацию о пользователе
+
     } catch (error) {
       console.error('Ошибка при входе через Github:', error);
       throw error;
     }
+
   }
 
   // Метод для входа через Google
@@ -39,6 +42,7 @@ export class AuthService {
     });
     try {
       const result = await signInWithPopup(this.auth, provider);
+      this.router.navigate(['/app-profile']);
       await this.userService.saveUserData(result.user);
       return result.user; // Возвращаем информацию о пользователе
     } catch (error) {

@@ -57,8 +57,13 @@ userData:any;
   }
 
   githubSignUp(){
-    this.authService.githubSignIn();
-    alert(`Hello ${this.userData.displayName}`)
+    try{
+      this.authService.githubSignIn();
+      alert(`Hello ${this.userData.displayName}`)
+    }
+  catch(e){
+    console.error(e);
+  }
   }
 
 }
