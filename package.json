@@ -10,7 +10,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.2.5",
     "@angular/cdk": "^18.2.6",
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
@@ -26,7 +25,6 @@
     "@popperjs/core": "^2.11.8",
     "angular-oauth2-oidc": "^17.0.2",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
     "firebase": "^10.14.0",
     "ng2-search-filter": "^0.5.1",
     "rxjs": "~7.8.0",
