@@ -48,10 +48,16 @@
             </a>
           </li>
           <ng-template #profileLink>
-            <li class="nav-item">
-              <a class="nav-link btn btn-primary" routerLink="/app-profile" routerLinkActive="active" aria-current="page">
-                <img [src]="user.photoURL" alt="Profile Picture" style="width: 40px;  border-radius: 50%;">
+            <li class="nav-item d-flex justify-content-center align-items-center ">
+              <a class="nav-link btn btn-primary " routerLink="/app-profile" routerLinkActive="active" aria-current="page">
+                <img *ngIf="user.photoURL!==null" [src]="user.photoURL" alt="Profile Picture" style="width: 40px;  border-radius: 50%;margin-right: 10px;">
+
+                <div *ngIf="user.photoURL===null" class="photo me-2 d-flex justify-content-center align-items-center">
+                  <p>{{user.email[0].toUpperCase()}}</p>
+                 </div>
+
               </a>
+ <p style="color:white !important;display: flex;align-items: center;margin-top: 10px;">{{balance}}</p>
             </li>
           </ng-template>
 
@@ -61,7 +67,7 @@
 
       </div>
     </div>
-  </div>
+</div>
 </nav>
 
 

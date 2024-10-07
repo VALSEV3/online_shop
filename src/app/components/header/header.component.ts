@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   currentRoute = '';
   basketOpened = false;
 user:any;
+balance='0.00$';
   constructor(private cardService: CardService, private router: Router, private authService:AuthService) {}
 
   ngOnInit() {
@@ -48,7 +49,10 @@ this.authService.getUser().subscribe(user=>{
   console.log(this.user)
 })
 
-
+const savedBalance=localStorage.getItem('balance')
+if(savedBalance){
+this.balance=savedBalance+'.00$';
+}
   }
 
   ngDoCheck(): void {

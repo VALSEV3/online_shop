@@ -3,17 +3,22 @@
 </header>
 <main class="d-flex justify-content-center container-fluid h-100 mt-5 pt-5">
   <div class="container-fluid w-75">
-    <div class="userInfo container-fluid d-flex justify-content-center align-items-cnter flex-wrap" style="border:1px solid rgba(58, 58, 58, 0.534); border-radius:10px; box-shadow: rgba(0, 0, 0, 0.303) 0px 4px 18px;">
-      <div class="userPhoto d-flex col-sm-2 col-12">
-        <img [src]="user.photoURL" alt="userPhoto" style="border-radius: 50%; width: 10rem">
+    <div class="userInfo container-fluid d-flex justify-content-center align-items-center flex-wrap" style="border:1px solid rgba(58, 58, 58, 0.534); border-radius:10px; box-shadow: rgba(0, 0, 0, 0.303) 0px 4px 18px;">
+      <div class="userPhoto d-flex col-sm-2 col-12 m-2">
+        <img *ngIf="user.photoURL!==null" [src]="user.photoURL" alt="userPhoto" style="border-radius: 50%; width: 10rem">
+        <div *ngIf="user.photoURL===null" class="photo d-flex justify-content-center align-items-center" style="  width:8rem;
+        height:8rem;
+        font-size: 3rem;">
+         <h1>{{user.email[0].toUpperCase()}}</h1>
+        </div>
       </div>
-      <div class="flex-column">
+      <div class="flex-column d-flex align-items-center">
         <h1>{{ user.displayName }}</h1>
         <h3>{{ user.email }}</h3>
       </div>
     </div>
 
-    <div class="btns d-flex justify-content-start h-100 align-items-start mt-5" style="border:1px solid rgba(58, 58, 58, 0.534); border-radius:10px; box-shadow: rgba(0, 0, 0, 0.303) 0px 4px 18px;">
+    <div class="btns d-flex justify-content-start h-100 align-items-start mt-5 flex-column" style="border:1px solid rgba(58, 58, 58, 0.534); border-radius:10px; box-shadow: rgba(0, 0, 0, 0.303) 0px 4px 18px;">
       <button class="btn btn-lg w-100 d-flex justify-content-start" (click)="this.authService.logout()">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
           <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
@@ -21,6 +26,9 @@
         </svg>
         Log Out
       </button>
+      <div class="w-100 ">
+        <app-popup class="w-100 d-flex justify-content-start"></app-popup>
+      </div>
     </div>
   </div>
 </main>

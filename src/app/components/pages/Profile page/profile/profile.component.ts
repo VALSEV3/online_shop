@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../../../header/header.component';
 import { AuthService } from '../../../../services/auth.service';
+import { NgIf } from '@angular/common';
+import { PopupComponent } from '../../../popup/popup.component';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent,NgIf,PopupComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

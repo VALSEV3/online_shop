@@ -39,14 +39,28 @@ userData:any;
   }
 
   // Handle form submission
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.signupForm.valid) {
-      console.log('Form Submitted', this.signupForm.value);
-      // You could handle email/password signup here
+      const { email, password } = this.signupForm.value;
+      try {
+        const user = await this.authService.registerWithEmail(email, password);
+        console.log('Пользователь зарегистрирован:', user);
+        alert(`Регистрация успешна! Добро пожаловать, ${user.email}`);
+      } catch (error: any) {
+        console.error('Ошибка при регистрации:', error);
+        if (error.message === 'Этот email уже зарегистрирован. Попробуйте войти в систему.') {
+          alert(error.message);  // Выводим сообщение, если email уже используется
+        } else {
+          alert('Ошибка при регистрации. Попробуйте снова.');
+        }
+      }
+    } else {
+      alert('Форма некорректна. Пожалуйста, проверьте введённые данные.');
     }
   }
 
-  googleSignUp(){
+
+  async googleSignUp(){
     try{
       this.authService.googleSignIn();
       alert(`Hello ${this.userData.displayName}`)

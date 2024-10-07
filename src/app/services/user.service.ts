@@ -19,6 +19,7 @@ export class UserService {
         email: user.email,
         photoURL: user.photoURL,
         createdAt: new Date(),
+        balance:user.balance,
       });
     }
   }

@@ -6,8 +6,8 @@
 }
 
 main {
-  overflow-y: hidden !important; /* Hide vertical overflow */
-  height: calc(100vh - 100px); /* Adjust this value based on header height */
+  overflow-y: hidden !important;
+  height: calc(100vh - 100px); 
 }
 
 
@@ -15,7 +15,11 @@ main {
   opacity: 1;
   transition: 0.4s linear;
   transform:scale(1);
-  background-color: rgba(175, 175, 175) !important;
+  background-color: rgb(214, 214, 214) !important;
+}
+
+.btn{
+  color:#0d6efd;
 }
 
 

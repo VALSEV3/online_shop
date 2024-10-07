@@ -8,4 +8,5 @@ export interface Card {
   added?: boolean; // Новое свойство для отслеживания состояния
   btnText?: string; // Текст кнопки
   backgroundColor?: string; // Цвет кнопки
+  count:number;
 }

@@ -5,7 +5,7 @@
 <main class="d-flex justify-content-around align-items-center flex-column mt-5 pt-5">
   <app-banner></app-banner>
 <div class=" w-75 d-flex flex-column justify-content-center align-items-center mt-5" style="border-radius: 18px;border:1px solid rgba(58, 58, 58, 0.534)">
-    <form class="d-flex  mt-5 pt-5 col-8" role="search" (ngSubmit)="search()">
+    <form class="d-flex  mt-5 pt-5 col-11 col-sm-8" role="search" (ngSubmit)="search()">
     <input class="form-control " type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" name="search" required>
     <button type="submit" class="btn btn-primary ms-2">Search</button>
   </form>
