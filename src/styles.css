@@ -147,7 +147,7 @@ body {
 
 .photo{
   border-radius: 50%;
-  background-color:#0d6efd ;
+  background-color:#ff0000 ;
   color:white;
   width:40px;
   height:40px;
@@ -155,8 +155,8 @@ body {
 
 body.dark-mode .photo{
   border-radius: 50% !important;
-  background-color:#0d6efd !important;
-  color:white !important; 
+  background-color:#ff0000 !important;
+  color:white !important;
   width:40px ;
   height:40px ;
 }

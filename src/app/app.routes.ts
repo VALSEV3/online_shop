@@ -6,6 +6,7 @@ import { SignUpComponent } from './components/pages/Sign up page/sign-up/sign-up
 import { ProfileComponent } from './components/pages/Profile page/profile/profile.component';
 import { authGuard } from './services/auth.guard';
 import { signGuard } from './services/sign-guard.guard';
+import { FeedbackComponent } from './components/pages/feedback/feedback.component';
 export const routes: Routes = [
   { path: 'home-page', component: HomeComponent },
   { path: 'app-about', component: AboutComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'app-basket', component: BasketComponent },
   { path: 'app-sign-up', component: SignUpComponent ,canActivate:[signGuard]},
   { path: 'app-profile', component: ProfileComponent,canActivate:[authGuard] },
+  { path: 'app-feedback', component:FeedbackComponent },
 ];

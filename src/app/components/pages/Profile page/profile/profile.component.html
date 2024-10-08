@@ -5,8 +5,8 @@
   <div class="container-fluid w-75">
     <div class="userInfo container-fluid d-flex justify-content-center align-items-center flex-wrap" style="border:1px solid rgba(58, 58, 58, 0.534); border-radius:10px; box-shadow: rgba(0, 0, 0, 0.303) 0px 4px 18px;">
       <div class="userPhoto d-flex col-sm-2 col-12 m-2">
-        <img *ngIf="user.photoURL!==null" [src]="user.photoURL" alt="userPhoto" style="border-radius: 50%; width: 10rem">
-        <div *ngIf="user.photoURL===null" class="photo d-flex justify-content-center align-items-center" style="  width:8rem;
+        <img *ngIf="photoLoaded" (error)="photoLoaded=false"  [src]="user.photoURL" alt="userPhoto" style="border-radius: 50%; width: 10rem">
+        <div *ngIf="!photoLoaded" class="photo d-flex justify-content-center align-items-center" style="  width:8rem;
         height:8rem;
         font-size: 3rem;">
          <h1>{{user.email[0].toUpperCase()}}</h1>

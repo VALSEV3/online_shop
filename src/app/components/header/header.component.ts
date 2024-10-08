@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   basketOpened = false;
 user:any;
 balance='0.00$';
+photoLoaded=true;
   constructor(private cardService: CardService, private router: Router, private authService:AuthService) {}
 
   ngOnInit() {

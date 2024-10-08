@@ -12,7 +12,7 @@ import { PopupComponent } from '../../../popup/popup.component';
 })
 export class ProfileComponent {
   user:any;
-
+photoLoaded=true;
 constructor(public authService:AuthService){
 this.authService.getUser().subscribe(user=>{
   this.user=user
