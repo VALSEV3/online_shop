@@ -32,7 +32,7 @@ this.balance=savedBalance+'.00$';
   ngDoCheck(): void {
 
       if(this.currentRoute==='/app-basket'){
-        this.cardPrice=(parseFloat(this.card.price)*this.card.count+'$').toString()[0,1,2,3]
+        this.cardPrice=(parseFloat(this.card.price)*this.card.count+'$').toString().substring(0, 4)
       }else{
         this.cardPrice=this.card.price
       }
@@ -59,10 +59,10 @@ this.balance=savedBalance+'.00$';
   }
 
 buy(){
-  const cardPrice=(parseInt(this.card.price)*this.card.count+'$').toString()[0,1,2,3]
+  const cardPrice=(parseInt(this.card.price)*this.card.count+'$').toString().substring(0, 4)
 if(parseFloat(this.balance)>=parseFloat(cardPrice)){
   alert(`you buy ${this.card.count} ${this.card.title}`)
-  this.balance=(parseFloat(this.balance)-parseFloat(cardPrice)).toString()[0,1,2,3]
+  this.balance=(parseFloat(this.balance)-parseFloat(cardPrice)).toString().substring(0, 4)
   this.cardService.removeFromBasket(this.card)
   this.cardService.setBasket();
   localStorage.setItem('balance',this.balance)
