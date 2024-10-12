@@ -62,7 +62,7 @@ buy(){
   const cardPrice=(parseInt(this.card.price)*this.card.count+'$').toString().substring(0, 4)
 if(parseFloat(this.balance)>=parseFloat(cardPrice)){
   alert(`you buy ${this.card.count} ${this.card.title}`)
-  this.balance=(parseInt(this.balance)-parseFloat(cardPrice)).toString()='$'
+  this.balance=(parseInt(this.balance)-parseFloat(cardPrice)).toString()+'$'
     localStorage.setItem('balance',this.balance)
   this.cardService.removeFromBasket(this.card)
   this.cardService.setBasket();
