@@ -24,13 +24,13 @@ this.currentRoute = this.router.url;
 this.router.events.subscribe(() => {
   this.currentRoute = this.router.url;
 });
+
+  }
+  ngDoCheck(): void {
 const savedBalance=localStorage.getItem('balance')
 if(savedBalance){
 this.balance=savedBalance;
 }
-  }
-  ngDoCheck(): void {
-
       if(this.currentRoute==='/app-basket'){
         this.cardPrice=(parseFloat(this.card.price)*this.card.count+'$').toString().substring(0, 4)
       }else{
@@ -63,9 +63,10 @@ buy(){
 if(parseFloat(this.balance)>=parseFloat(cardPrice)){
   alert(`you buy ${this.card.count} ${this.card.title}`)
   this.balance=(parseInt(this.balance)-parseFloat(cardPrice)).toString()
+    localStorage.setItem('balance',this.balance)
   this.cardService.removeFromBasket(this.card)
   this.cardService.setBasket();
-  localStorage.setItem('balance',this.balance)
+
 }
 else{
 alert("top up your balance");
