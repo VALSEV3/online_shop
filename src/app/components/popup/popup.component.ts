@@ -6,8 +6,9 @@ declare var bootstrap: any;
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.css']
+  styleUrls: ['./popup.component.css']  
 })
+
 export class PopupComponent {
   balance = '';
 
@@ -30,15 +31,18 @@ export class PopupComponent {
     this.router.navigate(['/home-page']);
   }
 
-  closeModal() {
-    // Получаем элемент модального окна по ID
-    const modalElement = document.getElementById('exampleModal');
-    if (modalElement) {
-      // Используем Bootstrap modal для закрытия
-      const modal = bootstrap.Modal.getInstance(modalElement);
-      if (modal) {
-        modal.hide();
-      }
+ closeModal() {
+  const modalElement = document.getElementById('exampleModal');
+  if (modalElement) {
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    if (modal) {
+      modal.hide();
+    } else {
+      // Initialize the modal if no instance exists yet
+      const newModal = new bootstrap.Modal(modalElement);
+      newModal.hide();
     }
   }
+}
+
 }
