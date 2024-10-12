@@ -26,7 +26,7 @@ this.router.events.subscribe(() => {
 });
 const savedBalance=localStorage.getItem('balance')
 if(savedBalance){
-this.balance=savedBalance+'.00$';
+this.balance=savedBalance;
 }
   }
   ngDoCheck(): void {
@@ -62,7 +62,7 @@ buy(){
   const cardPrice=(parseInt(this.card.price)*this.card.count+'$').toString().substring(0, 4)
 if(parseFloat(this.balance)>=parseFloat(cardPrice)){
   alert(`you buy ${this.card.count} ${this.card.title}`)
-  this.balance=(parseFloat(this.balance)-parseFloat(cardPrice)).toString().substring(0, 4)
+  this.balance=(parseInt(this.balance)-parseFloat(cardPrice)).toString()
   this.cardService.removeFromBasket(this.card)
   this.cardService.setBasket();
   localStorage.setItem('balance',this.balance)
