@@ -59,7 +59,7 @@ this.balance=savedBalance;
   }
 
 buy(){
-  const cardPrice=(parseInt(this.card.price)*this.card.count+'$').toString().substring(0, 4)
+  const cardPrice=(parseFloat(this.card.price)*this.card.count+'$').toString().substring(0, 4)
 if(parseFloat(this.balance)>=parseFloat(cardPrice)){
   alert(`you buy ${this.card.count} ${this.card.title}`)
   this.balance=(parseInt(this.balance)-parseFloat(cardPrice)).toString()+'$'
