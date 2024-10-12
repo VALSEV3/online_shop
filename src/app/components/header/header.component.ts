@@ -50,10 +50,7 @@ this.authService.getUser().subscribe(user=>{
   console.log(this.user)
 })
 
-const savedBalance=localStorage.getItem('balance')
-if(savedBalance){
-this.balance=savedBalance+'.00$';
-}
+
   }
 
   ngDoCheck(): void {
@@ -67,7 +64,10 @@ this.balance=savedBalance+'.00$';
       localStorage.setItem('basketOpened', JSON.stringify(this.basketOpened));
     }
     this.badge=this.newbadge;
-
+const savedBalance=localStorage.getItem('balance')
+if(savedBalance){
+this.balance=savedBalance;
+}
   }
 
   onDarkMode() {
