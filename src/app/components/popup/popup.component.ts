@@ -5,8 +5,10 @@ declare var bootstrap: any;
 
 @Component({
   selector: 'app-popup',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.css']  
+  styleUrls: ['./popup.component.css']
 })
 
 export class PopupComponent {
